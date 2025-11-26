@@ -35,7 +35,7 @@ export const siteConfig = {
   calUrl: 'https://cal.com/austin-karren',
   resume: '/files/resume.pdf',
   twitter: {
-    handle: '@recallgon',
+    handle: '@austinkdev',
     description: 'Software engineer, entrepreneur, and entrepreneur.',
   },
   link: {
