@@ -44,7 +44,7 @@ export const siteConfig = {
     thankYou: '/thank-you',
   },
   social: {
-    twitter: 'https://x.com/recallgon',
+    twitter: 'https://x.com/austinkdev',
     github: 'https://github.com/austin-karren',
     linkedin: 'https://www.linkedin.com/in/austin-karren/',
   },
