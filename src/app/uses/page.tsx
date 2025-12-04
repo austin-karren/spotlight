@@ -47,7 +47,7 @@ export default function Uses() {
     >
       <div className="space-y-20">
         <ToolsSection title="Workstation">
-          <Tool title="16” MacBook Pro, M2 Max, `16GB RAM (2023)">
+          <Tool title="16” MacBook Pro, M2 Max, 16GB RAM (2023)">
             {`Macbooks have great hardware and software that is hard to beat for laptops. I am still using macOS 15 as macOS 26 still has a ton of issues and I don't like liquid glass either.`}
           </Tool>
           <Tool title={`Dell 27" QHD Monitor`}>
