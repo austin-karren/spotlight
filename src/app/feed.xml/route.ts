@@ -5,8 +5,10 @@ import { Feed } from 'feed'
 import fs from 'fs'
 import path from 'path'
 import { bundleMDX } from 'mdx-bundler'
+import remarkGfm from 'remark-gfm'
+import rehypePrism from '@mapbox/rehype-prism'
 
-export async function GET(req: Request) {
+export async function GET() {
   const siteUrl = process.env.NEXT_PUBLIC_SITE_URL
 
   if (!siteUrl) {
@@ -48,7 +50,14 @@ export async function GET(req: Request) {
     const source = fs.readFileSync(filePath, 'utf-8')
     const mdxContent = source.slice(source.indexOf('/>') + 2).trim()
 
-    const { code: content } = await bundleMDX({ source: mdxContent })
+    const { code: content } = await bundleMDX({
+      source: mdxContent,
+      mdxOptions(options) {
+        options.remarkPlugins = [...(options.remarkPlugins ?? []), remarkGfm]
+        options.rehypePlugins = [...(options.rehypePlugins ?? []), rehypePrism]
+        return options
+      },
+    })
 
     const publicUrl = `${siteUrl}/articles/${article.slug}`
 
