@@ -1,11 +1,14 @@
 import { siteConfig } from '@/lib/site-config'
+import { getAllArticles } from '@/lib/articles'
 import assert from 'assert'
-import * as cheerio from 'cheerio'
 import { Feed } from 'feed'
+import fs from 'fs'
+import path from 'path'
+import { bundleMDX } from 'mdx-bundler'
+import remarkGfm from 'remark-gfm'
+import rehypePrism from '@mapbox/rehype-prism'
 
-export const dynamic = 'force-static'
-
-export async function GET(req: Request) {
+export async function GET() {
   const siteUrl = process.env.NEXT_PUBLIC_SITE_URL
 
   if (!siteUrl) {
@@ -32,35 +35,44 @@ export async function GET(req: Request) {
     },
   })
 
-  const articleIds = require
-    .context('../articles', true, /\/page\.mdx$/)
-    .keys()
-    .filter((key) => key.startsWith('./'))
-    .map((key) => key.slice(2).replace(/\/page\.mdx$/, ''))
+  const articles = await getAllArticles()
 
-  for (const id of articleIds) {
-    const url = String(new URL(`/articles/${id}`, req.url))
-    const html = await (await fetch(url)).text()
-    const $ = cheerio.load(html)
+  for (const article of articles) {
+    const filePath = path.join(
+      process.cwd(),
+      'src',
+      'app',
+      'articles',
+      article.slug,
+      'page.mdx',
+    )
 
-    const publicUrl = `${siteUrl}/articles/${id}`
-    const article = $('article').first()
-    const title = article.find('h1').first().text()
-    const date = article.find('time').first().attr('datetime')
-    const content = article.find('[data-mdx-content]').first().html()
+    const source = fs.readFileSync(filePath, 'utf-8')
+    const mdxContent = source.slice(source.indexOf('/>') + 2).trim()
 
-    assert(typeof title === 'string')
-    assert(typeof date === 'string')
+    const { code: content } = await bundleMDX({
+      source: mdxContent,
+      mdxOptions(options) {
+        options.remarkPlugins = [...(options.remarkPlugins ?? []), remarkGfm]
+        options.rehypePlugins = [...(options.rehypePlugins ?? []), rehypePrism]
+        return options
+      },
+    })
+
+    const publicUrl = `${siteUrl}/articles/${article.slug}`
+
+    assert(typeof article.title === 'string')
+    assert(typeof article.date === 'string')
     assert(typeof content === 'string')
 
     feed.addItem({
-      title,
+      title: article.title,
       id: publicUrl,
       link: publicUrl,
-      content,
+      content: content,
       author: [author],
       contributor: [author],
-      date: new Date(date),
+      date: new Date(article.date),
     })
   }
 

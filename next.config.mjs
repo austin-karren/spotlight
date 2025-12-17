@@ -15,6 +15,7 @@ const nextConfig = {
       },
     ],
   },
+  serverExternalPackages: ['mdx-bundler', 'esbuild'],
 }
 
 const withMDX = nextMDX({
