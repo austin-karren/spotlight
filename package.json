@@ -24,7 +24,6 @@
     "@typescript-eslint/eslint-plugin": "^8.18.2",
     "@typescript-eslint/parser": "^8.18.2",
     "autoprefixer": "^10.4.20",
-    "cheerio": "1.0.0-rc.12",
     "clsx": "^2.1.1",
     "fast-glob": "^3.3.2",
     "feed": "^4.2.2",
