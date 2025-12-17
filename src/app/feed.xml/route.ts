@@ -3,6 +3,8 @@ import assert from 'assert'
 import * as cheerio from 'cheerio'
 import { Feed } from 'feed'
 
+export const dynamic = 'force-static'
+
 export async function GET(req: Request) {
   const siteUrl = process.env.NEXT_PUBLIC_SITE_URL
 
@@ -65,7 +67,7 @@ export async function GET(req: Request) {
     status: 200,
     headers: {
       'content-type': 'application/xml',
-      'cache-control': 's-maxage=31556952',
+      'Cache-Control': 's-maxage=3600, stale-while-revalidate=86400',
     },
   })
 }
