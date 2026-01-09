@@ -103,7 +103,7 @@ export function Resume() {
       company: 'Safestreets',
       title: 'Software Engineer',
       logo: safestreetsLogo,
-      start: '2020',
+      start: '2025',
       end: {
         label: 'Present',
         dateTime: new Date().getFullYear().toString(),
