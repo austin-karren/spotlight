@@ -57,13 +57,12 @@ export default async function Home() {
       <Container className="mt-9">
         <div className="max-w-2xl">
           <h1 className="text-4xl font-bold tracking-tight text-zinc-800 sm:text-5xl dark:text-zinc-100">
-            Software engineer, founder, and designer.
+            Building robust systems with a designer’s precision.
           </h1>
           <p className="mt-6 text-base text-zinc-600 dark:text-zinc-400">
-            I’m Austin, a software engineer and entrepreneur based in Utah. I’m
-            the technical co-founder of Event Penguin, where we are making the
-            best registration tool for small to medium sized events. I’m also
-            currently looking for work so I’d love to connect with you!
+            I’m Austin, a software engineer based in Utah and the former
+            technical co-founder of Event Penguin. If I can help you build
+            something awesome, I'd love to connect!
           </p>
           <div className="mt-6 flex gap-6">
             <SocialLink

@@ -97,10 +97,8 @@ export default function About() {
               me when I began working on web development.
             </p>
             <p>
-              Today, I am the technical co-founder of Event Penguin, where we
-              are building the best event registration platform for small to
-              medium-sized events. I am dedicated to solving problems with apps
-              that are a <em>delight</em> to use.
+              Today, I am dedicated to solving problems with apps that are a{' '}
+              <em>delight</em> to use.
             </p>
           </div>
         </div>

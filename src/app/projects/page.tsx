@@ -5,21 +5,29 @@ import { Card } from '@/components/Card'
 import { SimpleLayout } from '@/components/SimpleLayout'
 import logoEventPenguin from '@/images/logos/event-penguin.svg'
 import logoTritonTp from '@/images/logos/tritontp.svg'
+import logoX9VP from '@/images/logos/x9.png'
 
 const projects = [
   {
-    name: 'EventPenguin',
+    name: 'X9 Venture Partners',
     description:
-      'A beautiful event registration platform for small businesses. The best b2b event registration platform for small to medium sized events.',
-    link: { href: 'https://eventpenguin.com', label: 'eventpenguin.com' },
-    logo: logoEventPenguin,
+      'Marketing site for X9 Venture Partners, a venture capital firm focused on early-stage technology companies.',
+    link: { href: 'https://x9vp.com/', label: 'x9vp.com' },
+    logo: logoX9VP,
   },
   {
     name: 'Triton Technology Partners',
     description:
-      'Triton Technology Partners is a software engineering consulting firm for the modern technology industry.',
+      'Marketing site for Triton Technology Partners, a software engineering consulting firm for the modern technology industry.',
     link: { href: 'https://tritontp.com', label: 'tritontp.com' },
     logo: logoTritonTp,
+  },
+  {
+    name: 'EventPenguin (discontinued)',
+    description:
+      'A beautiful event registration platform for small businesses. The best b2b event registration platform for small to medium sized events.',
+    link: { href: 'https://eventpenguin.com', label: 'eventpenguin.com' },
+    logo: logoEventPenguin,
   },
 ]
 
@@ -43,7 +51,7 @@ export default function Projects() {
   return (
     <SimpleLayout
       title="My creative footprint on the internet."
-      intro="I’ve worked on tons of little projects but these are the ones that I’m most proud of. Some of them are open-source, so if you see something that piques your interest, check out the code!"
+      intro="I’ve worked on tons of little projects but these are the ones that I’m most proud of!"
     >
       <ul
         role="list"

@@ -5,6 +5,7 @@ import logoEventPenguin from '@/images/logos/event-penguin.svg'
 import logoMyTechHigh from '@/images/logos/my-tech-high.png'
 import logoDevmountain from '@/images/logos/devmountain.png'
 import logoBYUI from '@/images/logos/byui.png'
+import safestreetsLogo from '@/images/logos/safestreets.webp'
 
 // Zed's prettier configuration isn't playing nice with types
 // prettier-ignore
@@ -99,9 +100,9 @@ function Role({ role }: { role: Role }) {
 export function Resume() {
   const resume = [
     {
-      company: 'Event Penguin',
-      title: 'Technical Co-Founder',
-      logo: logoEventPenguin,
+      company: 'Safestreets',
+      title: 'Software Engineer',
+      logo: safestreetsLogo,
       start: '2020',
       end: {
         label: 'Present',
@@ -109,8 +110,18 @@ export function Resume() {
       },
     },
     {
+      company: 'Event Penguin',
+      title: 'Technical Co-Founder',
+      logo: logoEventPenguin,
+      start: '2020',
+      end: {
+        label: '2025',
+        dateTime: '2025',
+      },
+    },
+    {
       company: 'My Tech High',
-      title: 'JavaScript Developer',
+      title: 'Junior Developer',
       logo: logoMyTechHigh,
       start: '2020',
     },
