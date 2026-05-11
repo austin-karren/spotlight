@@ -1,0 +1,56 @@
+import { ArticleLayout } from '@/components/ArticleLayout'
+import { siteConfig } from '@/lib/site-config'
+import dock from '@/images/articles/quick-tip-add-macos-dock-spacers/dock.png'
+
+export const article = {
+  author: siteConfig.author,
+  date: '2026-05-11',
+  title: 'Quick Tip: Add macOS Dock Spacers',
+  description:
+    'For the longest time my macOS Dock was a cluttered row of icons with no breathing room between them. I would group apps in my head but visually they all blended together. That was until I discovered that macOS has a hidden feature for adding invisible spacers between Dock icons. In this quick tip I will show you how to add them using the Terminal.',
+}
+
+export const metadata = {
+  title: article.title,
+  description: article.description,
+}
+
+export default (props) => <ArticleLayout article={article} {...props} />
+
+<Image src={dock} alt="A macOS Dock with invisible spacers separating groups of app icons" />
+
+For the longest time my macOS Dock was a cluttered row of icons with no breathing room between them. I would group apps in my head but visually they all blended together. That was until I discovered that macOS has a hidden feature for adding invisible spacers between Dock icons. In this quick tip I will show you how to add them using the Terminal.
+
+## Set up
+
+Before we get started, open up the Terminal app. You can find it in `Applications > Utilities`, or just hit `Cmd + Space` and search for "Terminal". Every command below is run from the Terminal, and nothing we do here is destructive — if you don't like the result you can simply drag the spacer off the Dock to remove it.
+
+## Add a standard space
+
+The first option is a full-sized spacer, which takes up the same amount of room as a regular app icon. This is great for creating clear separation between groups of apps, like splitting your productivity apps from your creative tools.
+
+```bash
+defaults write com.apple.dock persistent-apps -array-add '{"tile-type"="spacer-tile";}'
+```
+
+## Add a small space
+
+If a full-sized gap feels like too much, macOS also supports a smaller spacer that's about half the width. I like to use these between individual apps to create just a bit of visual rhythm without wasting Dock real estate.
+
+```bash
+defaults write com.apple.dock persistent-apps -array-add '{"tile-type"="small-spacer-tile";}'
+```
+
+You can run either of these commands as many times as you want. Each time you run it, a new spacer will be added to the end of your Dock.
+
+## Apply the changes
+
+The spacers won't actually appear until you restart the Dock. Don't worry — this won't close any of your apps, it just refreshes the Dock itself.
+
+```bash
+killall Dock
+```
+
+Once the Dock relaunches, you'll see your new spacers sitting at the far right of the apps section. From there you can drag them anywhere in your Dock to slot them between the apps you want to separate. If you ever want to remove one, just right-click it and choose "Remove from Dock", or drag it off the Dock until you see the "Remove" label.
+
+With that, we now have a simple way to keep our Dock organized and a little easier on the eyes. I hope you give it a try in your own setup.
